@@ -12,3 +12,6 @@ The probe set files themselves will be publicly available once the manuscript fo
 3) Hyloidea superfamily probe-set: This probe set will function across the Hyloidea superfamily of frogs. While some ultra-conserved exons and elements are included that are compatible across frogs, the main priority of this probe set is to acquire exons that are variable within Hyloidea so that more fine-scale phylogenetic questions can be addressed. 
 
 All three probe sets contain 2200 UCEs from Streicher et al. 2018. In addition, about ~5000 exons are shared across the probe sets, with different probes that will work more effectively depending on the group chosen above. Additionally, custom probe sets for your target group of interest can be created upon request.
+
+
+More details coming soon! 
