@@ -1,2 +1,14 @@
 # Anuran-Exome-Capture
 Pipeline for the analysis of data acquired from probe set designed by Hutter et al. (in preparation).
+
+The pipeline here represents version 1, and utilizes many open source programs to analyze genomic sequence capture data. 
+
+The probe set files themselves will be publicly available once the manuscript for the probe set is published. However, if you would like to collaborate, the following probe sets are available: 
+
+1) Amphibian-level probe set: this probe set will function across any group of amphibians and maintains compatibility across Amphibia. The disadvantage is that variability is lost due to the conserved nature of the markers, so a more narrow probe set might be best for smaller phylogenetic questions. This probe set is also best for Archaeobatrachian (i.e. basal) frog lineages. 
+
+2) Ranoidea superfamily probe-set: This probe set will function across the Ranoidea superfamily of frogs. While some ultra-conserved exons and elements are included that are compatible across frogs, the main priority of this probe set is to acquire exons that are variable within Ranoidea so that more fine-scale phylogenetic questions can be addressed. 
+
+3) Hyloidea superfamily probe-set: This probe set will function across the Hyloidea superfamily of frogs. While some ultra-conserved exons and elements are included that are compatible across frogs, the main priority of this probe set is to acquire exons that are variable within Hyloidea so that more fine-scale phylogenetic questions can be addressed. 
+
+Additionally, custom probe sets for your target group of interest can be created upon request.
