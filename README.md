@@ -1,4 +1,5 @@
-# Anuran-Exome-Capture
+# FrogCap Sequence Capture probeset and pipeline
+
 Pipeline for the analysis of data acquired from probe set designed by Hutter et al. (in preparation).
 
 The pipeline here represents version 1, and utilizes many open source programs to analyze genomic sequence capture data. 
