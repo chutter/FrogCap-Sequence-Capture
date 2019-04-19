@@ -2,7 +2,7 @@
 
 Pipeline for the analysis of data acquired from probe set designed by Hutter et al. (in preparation).
 
-The pipeline here represents version 1, and utilizes many open source programs to analyze genomic sequence capture data. 
+The pipeline here is in the process of being upgraded to version 2, and utilizes many open source programs to analyze genomic sequence capture data. 
 
 The probe set files themselves will be publicly available once the manuscript for the probe set is published. However, if you would like to collaborate, the following probe sets are available: 
 
