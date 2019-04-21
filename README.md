@@ -14,5 +14,6 @@ The probe set files themselves will be publicly available once the manuscript fo
 
 All three probe sets contain 2200 UCEs from Streicher et al. 2018. In addition, about ~5000 exons are shared across the probe sets, with different probes that will work more effectively depending on the group chosen above. Additionally, custom probe sets for your target group of interest can be created upon request.
 
+The Wiki above has instructions and tutorials for using all the scripts here!
 
 More details coming soon! 
