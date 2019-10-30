@@ -11,16 +11,16 @@ The probe set files themselves will be publicly available once the manuscript fo
 
 2) Ranoidea superfamily probe-set: This probe set will function across the Ranoidea superfamily of frogs. While some ultra-conserved exons and elements are included that are compatible across frogs, the main priority of this probe set is to acquire exons that are variable within Ranoidea so that more fine-scale phylogenetic questions can be addressed. 
 
-Ranoidea V1: the probe set used in Hutter et al. 2019
+  Ranoidea V1: the probe set used in Hutter et al. 2019
 
-Ranoidea V2: removes markers not represented well throughout the superfamily. Adds in more UCEs, Legacy markers. Recommended. 
+  Ranoidea V2: removes markers not represented well throughout the superfamily. Adds in more UCEs, Legacy markers. Recommended. 
 
 
 3) Hyloidea superfamily probe-set: This probe set will function across the Hyloidea superfamily of frogs. While some ultra-conserved exons and elements are included that are compatible across frogs, the main priority of this probe set is to acquire exons that are variable within Hyloidea so that more fine-scale phylogenetic questions can be addressed. 
 
-Hyloidea V1: the probe set used in Hutter et al. 2019
+  Hyloidea V1: the probe set used in Hutter et al. 2019
 
-Hyloidea V2: removes markers not represented well throughout the superfamily. Adds in additional shared markers with Ranoidea. Recommended. 
+  Hyloidea V2: removes markers not represented well throughout the superfamily. Adds in additional shared markers with Ranoidea. Recommended. 
 
 
 All three probe sets contain 2200 UCEs from Streicher et al. 2018. In addition, about ~6000 exons are shared across the probe sets, with different probes that will work more effectively depending on the group chosen above. Additionally, custom probe sets for your target group of interest can be created upon request, and a web form will soon be available to run the customization yourself.
