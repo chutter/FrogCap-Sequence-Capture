@@ -27,6 +27,21 @@ The probe set files themselves will be publicly available once the manuscript fo
 
 All three probe sets contain 2200 UCEs from Streicher et al. 2018. In addition, about ~6000 exons are shared across the probe sets, with different probes that will work more effectively depending on the group chosen above. Additionally, custom probe sets for your target group of interest can be created upon request, and a web form will soon be available to run the customization yourself.
 
-The Wiki above has instructions and tutorials for using all the scripts here!
+The Wiki above has instructions and tutorials for using all the scripts here! Quick links:
+
+## Tutorials 
+
+[Tutorial 0: Customized FrogCap probeset](https://github.com/chutter/FrogCap-Sequence-Capture/wiki/Tutorial-0:-Customized-FrogCap-probe-set)
+
+[Tutorial 1: Cluster and program setup](https://github.com/chutter/FrogCap-Sequence-Capture/wiki/Tutorial-1---Setting-up-environment)
+
+[Tutorial 2: Data preprocessing (cleaning raw reads, decontamination, assembly)](https://github.com/chutter/FrogCap-Sequence-Capture/wiki/Tutorial-2---Data-Processing)
+
+[Tutorial 3: Data alignment (target marker matching, alignment, alignment filtering)](https://github.com/chutter/FrogCap-Sequence-Capture/wiki/Tutorial-3---Marker-Matching-and-Alignment)
+
+Tutorial 4: Tree estimation (gene trees, concatenation, species trees) COMING SOON
+
+[Troubleshooting: random issues that arise](https://github.com/chutter/FrogCap-Sequence-Capture/wiki/Troubleshooting)
+
 
 Please contact me if you have any questions! 
