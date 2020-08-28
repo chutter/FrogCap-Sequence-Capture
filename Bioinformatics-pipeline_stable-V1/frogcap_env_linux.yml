@@ -128,6 +128,7 @@ dependencies:
   - setuptools=41.4.0=py37_0
   - sip=4.19.8=py37hf484d3e_0
   - six=1.14.0=py37_0
+  - spades=3.12
   - sqlite=3.30.1=h7b6447c_0
   - tk=8.6.8=hbc83047_0
   - tktable=2.10=h14c3975_0
