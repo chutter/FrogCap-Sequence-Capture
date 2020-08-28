@@ -6,8 +6,11 @@ library(GenomicRanges)
 library(Biostrings)
 library(Rsamtools)
 
+install.packages("seqinr", dependencies = T, repos = "https://cloud.r-project.org")
+library(seqinr)
+
 options(stringsAsFactors = FALSE)
-options(warn=2) #for debugging warnings in loops
+#options(warn=2) #for debugging warnings in loops
 
 ##########################################################################################################
 #Parameter setups. Only edit values here. 
@@ -36,6 +39,9 @@ loci.file<-"/home/username/Main_Project_Directory/SELECT_YOUR_MARKER_FILE.fa"
 ########################################################################  
 # Database setup
 ########################################################################
+
+#Creates the directory if it doesn't exist
+if (file.exists(proc.dir) == F){ dir.create(proc.dir) }
 
 #load in probe file
 probe.loci<-scanFa(FaFile(loci.file))
@@ -81,12 +87,6 @@ for (i in 1:length(file.names)){
   #match.data<-fread(paste(sample, ".pslx", sep =""), sep = "\t", header = F, stringsAsFactors = FALSE)
   match.data<-fread(paste(sample, "_match.txt", sep =""), sep = "\t", header = F, stringsAsFactors = FALSE)
   setnames(match.data, headers)
-  
-  if (probe.type == "probe"){
-    match.data$tName<-gsub(pattern = "_p.*", replacement = "", x = match.data$tName) 
-    match.data$tName<-gsub(pattern = "_.*", replacement = "", x = match.data$tName)
-    names(probe.loci)<-gsub(pattern = "_.*", replacement = "", x = names(probe.loci))
-  }#end probe if
   
   ##############################################################
   # Part A: Fixes up the match database

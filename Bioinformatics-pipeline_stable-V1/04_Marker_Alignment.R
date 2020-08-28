@@ -5,6 +5,9 @@ library(GenomicRanges)
 library(Biostrings)
 library(Rsamtools)
 
+install.packages("seqinr", dependencies = T, repos = "https://cloud.r-project.org")
+library(seqinr)
+
 options(stringsAsFactors = FALSE)
 
 ##########################################################################################################
@@ -12,15 +15,21 @@ options(stringsAsFactors = FALSE)
 ##########################################################################################################
 
 #Parameters
-threads<-"8"
-min.taxa<-3 #min number taxa to keep an alignment
+threads = "8"
+min.taxa = 4 #min number taxa to keep an alignment
+resume = "yes" #Yes if you want it to check and remove alignments already made
 
-#Cluster dirs
-species.loci<-"CONTIG-FILE-FROM-PREVIOUS-STEP.fa"  #The contig file output by the previous script 
-work.dir<-"/home/username/Main_Project_Directory"
-loci.file<-"/home/username/Main_Project_Directory/SELECT_YOUR_MARKER_FILE.fa" #Target loci file
-out.dir<-"/home/username/Main_Project_Directory/Alignments" #The name of the output directory
+# Diretory explanations
+# species.loci = "CONTIG-FILE-FROM-PREVIOUS-STEP.fa"  #The contig file output by the previous script 
+# work.dir = "/home/username/Main_Project_Directory"
+# loci.file = "/home/username/Main_Project_Directory/SELECT_YOUR_MARKER_FILE.fa" #Target loci file
+# out.dir = "/home/username/Main_Project_Directory/Alignments" #The name of the output directory
 
+#Example KU cluster 
+species.loci<-"Mantellidae_All_contigs.fa"
+work.dir<-"/home/c111h652/scratch/Mantellidae_All"
+loci.file<-"/home/c111h652/scratch/Mantellidae_All/Master_Ranoidea_All-Markers_Apr21-2019.fa"
+out.dir<-"/home/c111h652/scratch/Mantellidae_All/Alignments"
 
 ###############################################################################
 ######## DO NOT EDIT BELOW THIS POINT  ########################################
@@ -178,15 +187,21 @@ all.data<-scanFa(FaFile(species.loci))   # loads up fasta file
 dir.create(paste(out.dir, "/exon-only_untrimmed", sep =""))
 dir.create(paste(out.dir, "/all-markers_untrimmed", sep =""))
 
-bait.loci<-scanFa(FaFile(probe.file))  # loads up fasta file
+bait.loci<-scanFa(FaFile(loci.file))  # loads up fasta file
 
-if (length(grep("uce-5k-probes", probe.file)) == 1){
+if (length(grep("uce-5k-probes", loci.file)) == 1){
   names(bait.loci)<-gsub("_.*", "", names(bait.loci))
   bait.loci<-bait.loci[duplicated(names(bait.loci)) != T]
 }
 
 locus.names<-unique(names(bait.loci))
 setwd(out.dir)
+
+#Checks for alignments already done and removes from the to-do list
+if (resume == "yes"){
+  done = list.files(paste0(out.dir, "/all-markers_untrimmed"))
+  locus.names = locus.names[!locus.names %in% gsub(".phy$", "", done)]
+}
 
 #Loops through each locus and writes each species to end of file
 for (i in 1:length(locus.names)){
