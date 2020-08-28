@@ -1,0 +1,51 @@
+The attached anaconda environment file (the frogcap_env_linux.yml or frogcap_env_macos.yml) contains a list of all the exact versions of programs required for the FrogCap bioinformatics pipeline to function. This ensures results are reproducible and that compatible packages and programs are installed together so no conflicts occur. 
+
+The following are instructions for different setups:
+
+==================================================================================
+==== Instructions specifically for a Linux cluster 
+
+1. Log into your cluster 
+2. module load anaconda or install miniconda (make sure anaconda is activated)
+3. Move .yml file (frogcap_env_linux.yml) to your work directory 
+4. "cd" in the terminal to your work directory
+5. Run this anaconda command to make a new environment with all the necessary packages and their versions already included: 
+
+conda env create --file frogcap_env.yml --prefix $WORK/conda/frogcap
+
+where $WORK is your working directory, conda is the environment folder (if creating new), and frogcap is the new environment name
+
+==================================================================================
+==== Instructions specifically for a MacOS computer
+
+1. install anaconda
+2. create a working directory for anaconda environments (I will call mine "conda") placed wherever. Obtain absolute path (e.g. /chutter/conda)
+3. Move .yml file (frogcap_env_linux.yml) to your work directory (e.g. /chutter/conda)
+4. "cd" in the terminal to your work directory
+5. Run this anaconda command to make a new environment with all the necessary packages and their versions already included: 
+
+conda env create --file frogcap_env_macos.yml --prefix /chutter/conda/frogcap
+
+where $WORK is your working directory, conda is the environment folder, and frogcap is the new environment name
+
+
+==================================================================================
+==== Instructions specifically for University of Kansas cluster MacOS
+
+1. Log into cluster 
+2. Delete the entire conda folder with the environments (might take awhile)
+3. module load anaconda
+4. nano into .condarc file, which if it doesn’t exist, it will be created (in your home directory when logged on)
+5. Add these 2 lines into the file, which will specify a new location for packages to go instead of weird temp folders:
+
+pkgs_dirs:
+  - $WORK/conda/pkgs
+
+6. You have to change directory now to $WORK and move the .yml file attached here to $WORK.
+
+With the file attached here in the home directory. It basically contains a list of all the exact versions of everything in my environment which works, and installs them in yours exactly like mine. The problem is that packages get messed up when they are updated and don’t install properly anymore. 
+
+7.  Run this anaconda command to make a new environment with all the necessary packages and their versions already included: 
+
+conda env create --file frogcap_env.yml --prefix $WORK/conda/frogcap
+
