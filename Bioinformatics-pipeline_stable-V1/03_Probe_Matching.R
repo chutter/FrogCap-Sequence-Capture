@@ -5,8 +5,6 @@ library(data.table)
 library(GenomicRanges)
 library(Biostrings)
 library(Rsamtools)
-
-install.packages("seqinr", dependencies = T, repos = "https://cloud.r-project.org")
 library(seqinr)
 
 options(stringsAsFactors = FALSE)

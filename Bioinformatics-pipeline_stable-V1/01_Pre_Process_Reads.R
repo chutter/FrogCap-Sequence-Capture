@@ -1,41 +1,6 @@
 ###### This script removes barcodes, decontaminates and merges overlapping reads
 #####################################################################################
 
-#Best, quick way to get everything installed and working:
-
-#These commands need to be entered in the terminal command line, on a computer cluster or whereever. 
-#Remove # signs, as they comment out the steps here so R doesn't run them.
-
-#--------------------
-
-#Step 1: Download these two programs and install. Make sure they are in your $PATH
-
-#Fastp: https://github.com/OpenGene/fastp
-#bbtools: https://jgi.doe.gov/data-and-tools/bbtools/
-
-#Step 2: Make configuration file. This is the "File_rename.csv" file, which has two columns: File and Sample.
-#Column File = the unique string that is part of the file name for the two read pairs. 
-#Column Sample = what you want the new name to be called. 
-
-#Step 3: put Contamination_Genomes folder somewhere and note the directory.
-
-#Step 4: Install anaconda, or install a new working environment
-
-# Create conda environment, swap out "c111h652" for your own username. Could vary based on cluster.
-### This step creates a new environment wherever  you want
-
-#conda create --prefix $WORK/conda/frogcap
-#source activate /panfs/pfs.local/work/bi/c111h652/conda/frogcap
-
-#Gather other dependencies from R 
-#=setup channels (has to be in this order)
-#conda config --add channels bioconda
-#conda config --add channels conda-forge
-#conda config --add channels defaults
-
-#conda install -c bioconda fastp
-#conda install -c r r-base
-
 ##########################################################################################################
 #Parameter setups. Only edit values here. 
 ##########################################################################################################

@@ -15,22 +15,25 @@ conda env create --file frogcap_env.yml --prefix $WORK/conda/frogcap
 
 where $WORK is your working directory, conda is the environment folder (if creating new), and frogcap is the new environment name
 
+
 ==================================================================================
 ==== Instructions specifically for a MacOS computer
 
-1. install anaconda
+1. install anaconda (miniconda is best); activate it
 2. create a working directory for anaconda environments (I will call mine "conda") placed wherever. Obtain absolute path (e.g. /chutter/conda)
-3. Move .yml file (frogcap_env_linux.yml) to your work directory (e.g. /chutter/conda)
+3. Move .yml file (frogcap_env_macos.yml) to your work directory (e.g. /chutter/conda)
 4. "cd" in the terminal to your work directory
 5. Run this anaconda command to make a new environment with all the necessary packages and their versions already included: 
 
-conda env create --file frogcap_env_macos.yml --prefix /chutter/conda/frogcap
+conda env create --file frogcap_env_macos.yml --prefix /Users/chutter/conda/frogcap
 
-where $WORK is your working directory, conda is the environment folder, and frogcap is the new environment name
+conda activate /Users/chutter/conda/frogcap
+
+where --prefix is your conda directory for storing environments, and frogcap is the new environment name
 
 
 ==================================================================================
-==== Instructions specifically for University of Kansas cluster MacOS
+==== Instructions specifically for Linux cluster (KU cluster torque)
 
 1. Log into cluster 
 2. Delete the entire conda folder with the environments (might take awhile)
@@ -47,5 +50,9 @@ With the file attached here in the home directory. It basically contains a list 
 
 7.  Run this anaconda command to make a new environment with all the necessary packages and their versions already included: 
 
-conda env create --file frogcap_env.yml --prefix $WORK/conda/frogcap
+conda env create --file frogcap_env_linux.yml --prefix $WORK/conda/frogcap
+
+conda activate $WORK/conda/frogcap
+
+
 

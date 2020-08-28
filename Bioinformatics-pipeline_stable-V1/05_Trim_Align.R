@@ -28,11 +28,11 @@ min.cov = 0.30 #min proportion of sample that must overlap with consensus
 taxa.remove = c()
 
 #General directory meanings
-work.dir = "/Volumes/Armored/Gastrotheca"
-align.dir<-"/Volumes/Armored/Gastrotheca/Alignments"
-probe.file<-"/Volumes/Armored/Gastrotheca/Master_Hyloidea_All-Markers_Apr21-2019.fa"
-legacy.file<-"/Volumes/Armored/Gastrotheca/Final_Legacy_Consensus_Aug4.fa"
-uce.file<-"/Volumes/Armored/Gastrotheca/Hutter_uce5k_loci.fa"
+work.dir = "/Your/Project/Directory"
+align.dir<-"/Your/Project/Directory/Alignments"
+probe.file<-"/Your/Project/Directory/Probe_File.fa"
+legacy.file<-"/Your/Project/Directory/Final_Legacy_Consensus.fa"
+uce.file<-"/Your/Project/Directory/Hutter_uce5k_loci.fa"
 
 # #Example directory for KU cluster
 # work.dir = "/home/c111h652/scratch/Mantellidae_All"

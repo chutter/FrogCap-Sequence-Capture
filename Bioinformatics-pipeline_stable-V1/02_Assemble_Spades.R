@@ -20,7 +20,7 @@ threads<-"8"
 mem<-"80"
 
 #Directory where the "Processed_Samples" Folder is located
-work.dir<-"/home/c111h652/scratch/FrogCap"
+work.dir<-"/Your/Project/Directory"
 
 ########################
 #Choose which directory to use for assembly:

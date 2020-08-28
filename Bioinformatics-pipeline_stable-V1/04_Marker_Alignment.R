@@ -4,8 +4,6 @@ library(stringr)
 library(GenomicRanges)
 library(Biostrings)
 library(Rsamtools)
-
-install.packages("seqinr", dependencies = T, repos = "https://cloud.r-project.org")
 library(seqinr)
 
 options(stringsAsFactors = FALSE)
@@ -26,10 +24,10 @@ resume = "yes" #Yes if you want it to check and remove alignments already made
 # out.dir = "/home/username/Main_Project_Directory/Alignments" #The name of the output directory
 
 #Example KU cluster 
-species.loci<-"Mantellidae_All_contigs.fa"
-work.dir<-"/home/c111h652/scratch/Mantellidae_All"
-loci.file<-"/home/c111h652/scratch/Mantellidae_All/Master_Ranoidea_All-Markers_Apr21-2019.fa"
-out.dir<-"/home/c111h652/scratch/Mantellidae_All/Alignments"
+species.loci<-"Species_markers_from_probe_matching.fa"
+work.dir<-"/Your/Project/Directory"
+loci.file<-"/Your/Project/Directory/Target_Markers.fa"
+out.dir<-"/Your/Project/Directory/Alignments"
 
 ###############################################################################
 ######## DO NOT EDIT BELOW THIS POINT  ########################################
