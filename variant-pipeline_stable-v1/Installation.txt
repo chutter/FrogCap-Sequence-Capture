@@ -1,0 +1,16 @@
+##########################################
+
+##### Step 1: Use prior installation for bioinformatics-pipeline_stable-v1
+
+##### Step 2: install these following programs
+
+bwa/0.7.15
+java/1.8.0_131
+samtools/1.4.1
+gatk4
+
+##### Step 3: Install these remaining dependencies via anaconda
+
+#conda install -c bioconda r-vcfr bioconductor-variantannotation bioconductor-shortread
+#conda install -c r r-foreach r-doparallel
+#conda install -c bioconda picard
