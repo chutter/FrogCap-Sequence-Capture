@@ -41,8 +41,6 @@ The Wiki above has instructions and tutorials for using all the scripts here! Qu
 
 [Tutorial 3: Data alignment (target marker matching, alignment, alignment filtering)](https://github.com/chutter/FrogCap-Sequence-Capture/wiki/Tutorial-3---Marker-Matching-and-Alignment)
 
-Tutorial 4: Tree estimation (gene trees, concatenation, species trees) COMING SOON
-
 [Troubleshooting: random issues that arise](https://github.com/chutter/FrogCap-Sequence-Capture/wiki/Troubleshooting)
 
 
