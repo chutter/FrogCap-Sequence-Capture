@@ -1,0 +1,365 @@
+<!DOCTYPE HTML>
+<html lang="en-us" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using nimibook -->
+        <meta charset="UTF-8">
+        <title>tutorials/alignment.nim</title>
+
+        <!-- Custom HTML head -->
+        <!-- custom head content -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="a book built with nimibook">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🐳</text></svg>">
+        <link rel="stylesheet" href="../assets/css/variables.css">
+        <link rel="stylesheet" href="../assets/css/general.css">
+        <link rel="stylesheet" href="../assets/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../assets/FontAwesome/css/font-awesome.min.css">
+
+        <!-- Highlight.js Stylesheets - I could use nimib native highlight but let's keep it for styling... -->
+        <link rel="stylesheet" href="../assets/css/highlight.css">
+        <link rel="stylesheet" href="../assets/css/tomorrow-night.css">
+        <link rel="stylesheet" href="../assets/css/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets - why the "../"? -->
+
+
+        <!-- plausible analytics (new in nimibook) -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "..//assets";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                                <ol class="chapter">
+                  <li class="chapter-item expanded ">
+                    <a href="../index.html" tabindex="0">
+                      <strong aria-hidden="true">1.</strong> Introduction
+                    </a>
+                  </li>
+                  <li class="chapter-item expanded ">
+                    <a href="../tutorials/index.html" tabindex="0">
+                      <strong aria-hidden="true">2.</strong> Tutorials
+                    </a>
+                  </li>
+                  <li>
+                  <ol class="section">
+                  <li class="chapter-item expanded ">
+                    <a href="../tutorials/customize.html" tabindex="0">
+                      <strong aria-hidden="true">2.1.</strong> Customize Probeset
+                    </a>
+                  </li>
+                  <li class="chapter-item expanded ">
+                    <a href="../tutorials/setup.html" tabindex="0">
+                      <strong aria-hidden="true">2.2.</strong> Setup Environment
+                    </a>
+                  </li>
+                  <li class="chapter-item expanded ">
+                    <a href="../tutorials/process.html" tabindex="0">
+                      <strong aria-hidden="true">2.3.</strong> Data Processing
+                    </a>
+                  </li>
+                  <li class="chapter-item expanded ">
+                    <a href="../tutorials/alignment.html" class="active" tabindex="0">
+                      <strong aria-hidden="true">2.4.</strong> Data Alignment
+                    </a>
+                  </li>
+                  <li class="chapter-item expanded ">
+                    <a href="../tutorials/troubleshoot.html" tabindex="0">
+                      <strong aria-hidden="true">2.5.</strong> Troubleshooting
+                    </a>
+                  </li>
+                  </ol>
+                  </li>
+                  <li class="chapter-item expanded ">
+                    <a href="../download.html" tabindex="0">
+                      <strong aria-hidden="true">3.</strong> Download Probes
+                    </a>
+                  </li>
+                  <li class="chapter-item expanded ">
+                    <a href="../papers.html" tabindex="0">
+                      <strong aria-hidden="true">4.</strong> Papers Using FrogCap
+                    </a>
+                  </li>
+                </ol>
+<!-- I could use also an unescaped context value -->
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <!-- custom header content -->                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">FrogCap</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/chutter/FrogCap-Sequence-Capture" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1>Data Alignment</h1>
+<p>*** STILL A WORK IN PROGRESS</p>
+<p>This tutorial will guide you through matching assembled contigs to the target markers and next aligning each marker.</p>
+<h2>Target Marker Matching [R script 03_Probe_Matching.R]</h2>
+<p>After assembly, confirm that each sample folder has a new &quot;assembled-contigs&quot; folder present. In this folder are two files: the &quot;_contigs.fa&quot; file are the Spades assembled contigs while the &quot;_dipcontigs.fa&quot; file are the regular contigs where contigs from the same haplotype are merged together to create a &quot;haplocontig&quot; from the Dipspades function of Spades. The dipcontigs are typically used in this pipeline, as it prevents data from being discarded for having the appearance of a paralog. However, the pre-merged contigs are available also.</p>
+<pre><code>     /Spinomantis_elegans_CRH111
+      ├── /reports
+      ├── /assembled-contigs *** NEW
+      │   ├── Spinomantis_elegans_CRH111_contigs.fa *** NEW
+      │   └── Spinomantis_elegans_CRH111_dipcontigs.fa *** NEW
+      ├── /assembly-reads
+      ├── /cleaned-reads-snp
+      └── /raw-reads-symlink
+
+*/ denotes directory
+</code></pre>
+<p>Once you confirm that the assembly finished properly for each sample, check the &quot;Project_Name&quot; directory to check that the &quot;Assembled_Contigs&quot; folder is present and contains all of the samples that were assembled in the previous step. This is also the point where additional contigs from other assembly runs can be added in, as the sample contigs placed in the &quot;Assembled_Contigs&quot; folder will be the samples used for sequence alignment.</p>
+<pre><code>     /Project_Name
+      ├── /Assembled_Contigs *** NEW
+      │   ├── Spinomantis_elegans_CRH111.fa *** NEW
+      │   ├── Boophis_burgeri_CRH0481.fa *** NEW
+      │   ├── Aglyptodactylus_securifer_CRH1644.fa *** NEW
+      │   └── Mantidactylus_femoralis_CRH2340.fa *** NEW
+      ├── /raw_data
+      ├── File_rename.csv
+      ├── /FrogCap_Files
+      └── /Processed_Samples
+
+*/ denotes directory
+
+</code></pre>
+<p>Once all the data is together in the &quot;Assembled_Contigs&quot; (or other folder), everything is ready for target marker matching. This step uses BLAST and the target marker fasta file to match each samples' contigs to the target markers. This script will detect and save paralogs separately and create a single large fasta file of all the samples' matching contigs renamed to the target marker for alignment in the second step.</p>
+<p>First, locate the target marker fasta file (i.e. &quot;Master_Hyloidea_All-Markers_Apr21-2019.fa&quot;), which will very soon all be publicly available. Second, edit the &quot;03_Probe_Matching.R&quot; R script, which will have this section:</p>
+<pre><code class="language-r">##########################################################################################################
+#Parameter setups. Only edit values here. 
+##########################################################################################################
+
+#This script does the following:
+#1. Matches the loci to the contigs, saves them to a new file
+#2. Also finds the potential paralogs, removes them, and saves them to a separate file
+
+#Set up directories
+threads&lt;-&quot;6&quot; #threads, keep quotes
+contig.save&lt;-&quot;Project_Name&quot;  #This is your save name for the big contig match file
+
+#CLUSTER directories
+work.dir&lt;-&quot;/home/username/Main_Project_Directory&quot; #Your main project directory 
+proc.dir&lt;-&quot;/home/username/Main_Project_Directory/Processed_Samples&quot;
+contig.dir&lt;-&quot;/home/username/Main_Project_Directory/Assembled_Contigs&quot;
+loci.file&lt;-&quot;/home/username/Main_Project_Directory/SELECT_YOUR_MARKER_FILE.fa&quot;
+
+</code></pre>
+<p>When finished editing, run the script using the &quot;Rscript&quot; terminal command which installs alongside R. This can be done manually in the terminal window or added as the command in a cluster file.</p>
+<pre><code class="language-bash">&gt; Rscript 03_Probe_Matching.R
+
+</code></pre>
+<p>The marker matching script should take no longer than 3 hours unless you have a large number of samples. When it has finished, it should place two new files into each sample directory, in the &quot;assembled-contigs&quot; folder. The first, the &quot;_orthologs.fa&quot; file is the file of single-copy markers that will be used for alignment. The second file &quot;_paralogs.fa&quot; are potential paralogs, where more than 1 contig matched to the target marker. This could reflect poor assembly of that marker or a true paralog, and currently FrogCap does not use this file. In the future, FrogCap will include a paralog discovery tool to make these data usable.</p>
+<pre><code>     /Spinomantis_elegans_CRH111
+      ├── /reports
+      ├── /assembled-contigs
+      │   ├── Spinomantis_elegans_CRH111_contigs.fa
+      │   ├── Spinomantis_elegans_CRH111_dipcontigs.fa
+      │   ├── Spinomantis_elegans_CRH111_orthologs.fa *** NEW
+      │   └── Spinomantis_elegans_CRH111_paralogs.fa *** NEW
+      ├── /assembly-reads
+      ├── /cleaned-reads-snp
+      └── /raw-reads-symlink
+
+*/ denotes directory
+
+</code></pre>
+<p>Once you confirm that these new files are present, return to the &quot;Project_Name&quot; directory to check that two new files are present. The first, the &quot;-sample-assessment.csv&quot; file provides summary statistics for each sample. These statistics include the number of matching orthologous markers, the number of paralogs, and matching contig length stats. The second file, the &quot;Project_Name_contigs.fa&quot; file is all the matching marker data extracted from each samples contigs. This fasta file includes the sequence data and the sample name and marker name in the header.</p>
+<pre><code>     /Project_Name
+      ├── /Assembled_Contigs
+      ├── /raw_data
+      ├── Project_Name_contigs.fa *** NEW
+      ├── Project_Name-sample-assessment.csv *** NEW
+      ├── File_rename.csv
+      ├── /FrogCap_Files
+      └── /Processed_Samples
+
+*/ denotes directory
+
+</code></pre>
+<p>After running &quot;03_Marker_Matching.R&quot; and obtaining the new contigs file for alignment, move onto the next step to align each marker.</p>
+<h2>Target Marker Alignment [04_Marker_Alignment.R]</h2>
+<p>Insert explanation here for the next section</p>
+<pre><code class="language-r">##########################################################################################################
+#Parameter setups. Only edit values here. 
+##########################################################################################################
+
+#Parameters
+threads&lt;-&quot;8&quot;
+min.taxa&lt;-3 #min number taxa to keep an alignment
+
+#Cluster dirs
+species.loci&lt;-&quot;CONTIG-FILE-FROM-PREVIOUS-STEP.fa&quot;  #The contig file output by the previous script 
+work.dir&lt;-&quot;/home/username/Main_Project_Directory&quot;
+loci.file&lt;-&quot;/home/username/Main_Project_Directory/SELECT_YOUR_MARKER_FILE.fa&quot; #Target loci file
+out.dir&lt;-&quot;/home/username/Main_Project_Directory/Alignments&quot; #The name of the output directory
+</code></pre>
+<p>When finished editing, run the script using the &quot;Rscript&quot; terminal command which installs alongside R. This can be done manually in the terminal window or added as the command in a cluster file.</p>
+<pre><code class="language-bash">&gt; Rscript 01_Pre_Process_Reads.R
+</code></pre>
+<p>Show example of output files and explain them.</p>
+<p>Finally, before running the FrogCap pipeline scripts, the input files must be organized in a specific way. First, create a directory and name it after the project name. Second, put the newly created &quot;File_rename.csv&quot;, the downloaded and unzipped folder of &quot;FrogCap_Files&quot;, and finally the demultiplexed raw reads in a folder named &quot;raw_data&quot;. An example of the file structure is shown below.</p>
+<pre><code>     /Project_Name
+      ├── /raw_data
+      │   ├── Spinomantis_elegans_CRH111_R1.fastq.gz
+      │   ├── Spinomantis_elegans_CRH111_R2.fastq.gz
+      │   ├── Boophis_burgeri_CRH0481_R1.fastq.gz
+      │   ├── Boophis_burgeri_CRH0481_R2.fastq.gz
+      │   ├── Aglyptodactylus_securifer_CRH1644_R1.fastq.gz
+      │   ├── Aglyptodactylus_securifer_CRH1644_R2.fastq.gz
+      │   ├── Mantidactylus_femoralis_CRH2340_R1.fastq.gz
+      │   └── Mantidactylus_femoralis_CRH2340_R2.fastq.gz
+      ├── File_rename.csv
+      └── /FrogCap_Files
+
+*/ denotes directory
+
+</code></pre>
+<p>Once you confirm that the assembly finished properly for each sample, check the &quot;Project_Name&quot; directory to check that the &quot;Assembled_Contigs&quot; folder is present and contains all of the samples that were assembled in the previous step. This is also the point where additional contigs from other assembly runs can be added in, as the sample contigs placed in the &quot;Assembled_Contigs&quot; folder will be the samples used for sequence alignment.</p>
+<pre><code>     /Project_Name
+      ├── /Assembled_Contigs *** NEW
+      │   ├── Spinomantis_elegans_CRH111.fa *** NEW
+      │   ├── Boophis_burgeri_CRH0481.fa *** NEW
+      │   ├── Aglyptodactylus_securifer_CRH1644.fa *** NEW
+      │   └── Mantidactylus_femoralis_CRH2340.fa *** NEW
+      ├── /raw_data
+      ├── File_rename.csv
+      ├── /FrogCap_Files
+      └── /Processed_Samples
+
+*/ denotes directory
+
+</code></pre>
+<p>When finished editing, run the script using the &quot;Rscript&quot; terminal command which installs alongside R. This can be done manually in the terminal window or added as the command in a cluster file.</p>
+<p>The Assembly run generated a statistics file in the &quot;reports&quot; folder and a new folder &quot;assembled-contigs&quot;. This folder has two new files: the &quot;_contigs.fa&quot; file are the Spades assembled contigs while the &quot;_dipcontigs.fa&quot; file are the regular contigs where contigs from the same haplotype are merged together to create a &quot;haplocontig&quot;.</p>
+<p>These two scripts can be run on any number of samples in any combination. However, when done with Tutorial 1, you will need to select your definitive sample set for alignment for Tutorial 2.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../tutorials/process.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../tutorials/troubleshoot.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../tutorials/process.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../tutorials/troubleshoot.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+
+
+
+        <script src="../assets/js/clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../assets/js/highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../assets/js/book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

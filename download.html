@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using nimibook -->
         <meta charset="UTF-8">
-        <title>index.nim</title>
+        <title>download.nim</title>
 
         <!-- Custom HTML head -->
         <!-- custom head content -->
@@ -81,7 +81,7 @@
             <div class="sidebar-scrollbox">
                                 <ol class="chapter">
                   <li class="chapter-item expanded ">
-                    <a href="./index.html" class="active" tabindex="0">
+                    <a href="./index.html" tabindex="0">
                       <strong aria-hidden="true">1.</strong> Introduction
                     </a>
                   </li>
@@ -120,7 +120,7 @@
                   </ol>
                   </li>
                   <li class="chapter-item expanded ">
-                    <a href="./download.html" tabindex="0">
+                    <a href="./download.html" class="active" tabindex="0">
                       <strong aria-hidden="true">3.</strong> Download Probes
                     </a>
                   </li>
@@ -178,57 +178,29 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1>FrogCap Sequence Capture probe set and pipeline</h1>
-<p>Pipeline for the analysis of data acquired from probe set designed by Hutter et al. (2019; in review) and available as a preprint:</p>
-<p>Hutter C.R., Cobb K.A., Portik D., Travers S., Wood Jr. P.L., and Brown R.M. (2019). FrogCap: A modular sequence capture probe set for phylogenomics and population genetics for Anurans, assessed across multiple phylogenetic scales. bioRxiv 825307. doi: https://doi.org/10.1101/825307</p>
-<p>The data analysis pipeline above (scripts 1-4) utilizes many open source programs to analyze genomic sequence capture data and is described in Hutter et al. (2019). The scripts need very little technical knowledge, and require some parameters to be set. Below there are tutorials for setting up and executing each step of the pipeline process.</p>
-<p>The probe set files are publicly available above in the Probe Sets folder. The probe sets are:</p>
-<ol>
-<li>
-<p>Ranoidea superfamily probe set: This probe set will function across the Ranoidea superfamily of frogs. While some ultra-conserved exons and elements are included that are compatible across frogs, the main priority of this probe set is to acquire exons that are variable within Ranoidea so that more fine-scale phylogenetic questions can be addressed.</p>
-<pre><code> Ranoidea V1: the probe set used in Hutter et al. (2019)
-</code></pre>
-</li>
-</ol>
-<pre><code>	Ranoidea V2: removes markers not represented well throughout the superfamily. 
-    Adds in more UCEs, Legacy markers. Recommended. 
-</code></pre>
-<ol start="2">
-<li>
-<p>Hyloidea superfamily probe set: This probe set will function across the Hyloidea superfamily of frogs. While some ultra-conserved exons and elements are included that are compatible across frogs, the main priority of this probe set is to acquire exons that are variable within Hyloidea so that more fine-scale phylogenetic questions can be addressed.</p>
-<pre><code> Hyloidea V1: the probe set used in Hutter et al. (2019)
-
- Hyloidea V2: removes markers not represented well throughout the superfamily. 
- Adds in additional shared markers with Ranoidea. Recommended. 
-</code></pre>
-</li>
-<li>
-<p>Amphibian-level probe set: this probe set will function across any group of amphibians and maintains compatibility across Amphibia. The disadvantage is that variability is lost due to the conserved nature of the markers, so a more narrow probe set might be best for smaller phylogenetic questions. This probe set is also best for Archaeobatrachian (i.e. basal) frog lineages. This probe set also contains some BUSCO markers to allow compatibility with other vertebrate probe sets. This probe set is the only one not yet published, collaboration is available upon request.</p>
-</li>
-</ol>
-<p>All three probe sets contain 2200 UCEs from Streicher et al. 2018. In addition, about ~6000 exons are shared across the probe sets, with different probes that will work more effectively depending on the group chosen above. Additionally, custom probe sets for your target group of interest can be created upon request, or you may use the script in Tutorial 0 to design a custom probe set.</p>
-<p>Please contact me if you have any questions!</p>
-<h2>Tutorials</h2>
-<p>The Wiki above has instructions and tutorials for using all the scripts here! Quick links:</p>
-<p><a href="https://github.com/chutter/FrogCap-Sequence-Capture/wiki/Tutorial-0:-Customized-FrogCap-probe-set">Tutorial 0: Customized FrogCap probeset</a></p>
-<p><a href="https://github.com/chutter/FrogCap-Sequence-Capture/wiki/Tutorial-1---Setting-up-environment">Tutorial 1: Cluster and program setup</a></p>
-<p><a href="https://github.com/chutter/FrogCap-Sequence-Capture/wiki/Tutorial-2---Data-Processing">Tutorial 2: Data preprocessing (cleaning raw reads, decontamination, assembly)</a></p>
-<p><a href="https://github.com/chutter/FrogCap-Sequence-Capture/wiki/Tutorial-3---Marker-Matching-and-Alignment">Tutorial 3: Data alignment (target marker matching, alignment, alignment filtering)</a></p>
-<p><a href="https://github.com/chutter/FrogCap-Sequence-Capture/wiki/Troubleshooting">Troubleshooting: random issues that arise</a></p>
-<h2>Papers that have used FrogCap:</h2>
-<p>Chan K.O., Hutter C.R., Wood P.L., Su Y.C., &amp; Brown R.M. (2021). Gene flow increases phylogenetic structure and inflates cryptic species estimations: A case study on widespread Philippine puddle frogs (Occidozyga laevis). Systematic Biology, syab034.</p>
-<p>Rasolonjatovo S.M., Scherz M.D., Hutter C.R., Glaw F., Rakotoarison A., Razafindraibe J.H., Goodman S.M., Raselimanana A.P. and Vences M. (2020). Sympatric lineages in the Mantidactylus ambreensis complex of Malagasy frogs originated allopatrically rather than by in-situ speciation. Molecular Phylogenetics and Evolution, 144, 106700.</p>
-<p>Chan K.O., Hutter C.R., Wood Jr P.L., Grismer L.L., &amp; Brown R.M. (2020). Target-capture phylogenomics provide insights on gene and species tree discordances in Old World treefrogs (Anura: Rhacophoridae). Proceedings of the Royal Society B, 287(1940), 20202102.</p>
-<p>Chan K.O., Hutter C.R., Wood Jr P.L., Grismer L.L., Das I., &amp; Brown R.M. (2020). Gene flow creates a mirage of cryptic species in a Southeast Asian spotted stream frog complex. Molecular Ecology, 29(20), 3970-3987.</p>
-<p>Chan K.O., Hutter C.R., Wood Jr P.L., Grismer L.L., &amp; Brown R.M. (2020). Larger, unfiltered datasets are more effective at resolving phylogenetic conflict: Introns, exons, and UCEs resolve ambiguities in Golden-backed frogs (Anura: Ranidae; genus Hylarana). Molecular Phylogenetics and Evolution, 151, 106899.</p>
-<p>Hutter C.R., Cobb K.A., Portik D., Travers S., Wood Jr. P.L., and Brown R.M. (2019). FrogCap: A modular sequence capture probe set for phylogenomics and population genetics for Anurans, assessed across multiple phylogenetic scales. bioRxiv 825307. doi: https://doi.org/10.1101/825307</p>
+                        <h1>Download Probes &amp; Markers</h1>
+<p><a href="https://github.com/chutter/FrogCap-Sequence-Capture/blob/master/Probe_Sets/Hyloidea-V1_Baits.fa">Hyloidea-V1_Baits.fa</a></p>
+<p><a href="https://github.com/chutter/FrogCap-Sequence-Capture/blob/master/Probe_Sets/Hyloidea-V1_Markers.fa">Hyloidea-V1_Markers.fa</a></p>
+<p><a href="https://github.com/chutter/FrogCap-Sequence-Capture/blob/master/Probe_Sets/Hyloidea-V2_Baits.fa">Hyloidea-V2_Baits.fa</a></p>
+<p><a href="https://github.com/chutter/FrogCap-Sequence-Capture/blob/master/Probe_Sets/Hyloidea-V2_Markers.fa">Hyloidea-V2_Markers.fa</a></p>
+<p><a href="https://github.com/chutter/FrogCap-Sequence-Capture/blob/master/Probe_Sets/Ranoidea-V1_Baits.fa">Ranoidea-V1_Baits.fa</a></p>
+<p><a href="https://github.com/chutter/FrogCap-Sequence-Capture/blob/master/Probe_Sets/Ranoidea-V1_Markers.fa">Ranoidea-V1_Markers.fa</a></p>
+<p><a href="https://github.com/chutter/FrogCap-Sequence-Capture/blob/master/Probe_Sets/Ranoidea-V2_Baits.fa">Ranoidea-V2_Baits.fa</a></p>
+<p><a href="https://github.com/chutter/FrogCap-Sequence-Capture/blob/master/Probe_Sets/Ranoidea-V2_Markers.fa">Ranoidea-V2_Markers.fa</a></p>
+<p><a href="https://github.com/chutter/FrogCap-Sequence-Capture/blob/master/Probe_Sets/Reduced-Ranoidea_Baits.fa">Reduced-Ranoidea_Baits.fa</a></p>
+<p><a href="https://github.com/chutter/FrogCap-Sequence-Capture/blob/master/Probe_Sets/Reduced-Ranoidea_Markers.fa">Reduced-Ranoidea_Markers.fa</a></p>
+<p><a href="https://github.com/chutter/FrogCap-Sequence-Capture/blob/master/Probe_Sets/subset_legacy-sanger.fa">subset_legacy-sanger.fa</a></p>
+<p><a href="https://github.com/chutter/FrogCap-Sequence-Capture/blob/master/Probe_Sets/subset_uce-consensus.fa">subset_uce-consensus.fa</a></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="./tutorials/troubleshoot.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
-                            <a rel="next" href="./tutorials/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="./papers.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -238,8 +210,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="./tutorials/troubleshoot.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
-                    <a rel="next" href="./tutorials/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="./papers.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

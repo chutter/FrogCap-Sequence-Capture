@@ -1,0 +1,335 @@
+<!DOCTYPE HTML>
+<html lang="en-us" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using nimibook -->
+        <meta charset="UTF-8">
+        <title>tutorials/setup.nim</title>
+
+        <!-- Custom HTML head -->
+        <!-- custom head content -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="a book built with nimibook">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🐳</text></svg>">
+        <link rel="stylesheet" href="../assets/css/variables.css">
+        <link rel="stylesheet" href="../assets/css/general.css">
+        <link rel="stylesheet" href="../assets/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../assets/FontAwesome/css/font-awesome.min.css">
+
+        <!-- Highlight.js Stylesheets - I could use nimib native highlight but let's keep it for styling... -->
+        <link rel="stylesheet" href="../assets/css/highlight.css">
+        <link rel="stylesheet" href="../assets/css/tomorrow-night.css">
+        <link rel="stylesheet" href="../assets/css/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets - why the "../"? -->
+
+
+        <!-- plausible analytics (new in nimibook) -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "..//assets";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                                <ol class="chapter">
+                  <li class="chapter-item expanded ">
+                    <a href="../index.html" tabindex="0">
+                      <strong aria-hidden="true">1.</strong> Introduction
+                    </a>
+                  </li>
+                  <li class="chapter-item expanded ">
+                    <a href="../tutorials/index.html" tabindex="0">
+                      <strong aria-hidden="true">2.</strong> Tutorials
+                    </a>
+                  </li>
+                  <li>
+                  <ol class="section">
+                  <li class="chapter-item expanded ">
+                    <a href="../tutorials/customize.html" tabindex="0">
+                      <strong aria-hidden="true">2.1.</strong> Customize Probeset
+                    </a>
+                  </li>
+                  <li class="chapter-item expanded ">
+                    <a href="../tutorials/setup.html" class="active" tabindex="0">
+                      <strong aria-hidden="true">2.2.</strong> Setup Environment
+                    </a>
+                  </li>
+                  <li class="chapter-item expanded ">
+                    <a href="../tutorials/process.html" tabindex="0">
+                      <strong aria-hidden="true">2.3.</strong> Data Processing
+                    </a>
+                  </li>
+                  <li class="chapter-item expanded ">
+                    <a href="../tutorials/alignment.html" tabindex="0">
+                      <strong aria-hidden="true">2.4.</strong> Data Alignment
+                    </a>
+                  </li>
+                  <li class="chapter-item expanded ">
+                    <a href="../tutorials/troubleshoot.html" tabindex="0">
+                      <strong aria-hidden="true">2.5.</strong> Troubleshooting
+                    </a>
+                  </li>
+                  </ol>
+                  </li>
+                  <li class="chapter-item expanded ">
+                    <a href="../download.html" tabindex="0">
+                      <strong aria-hidden="true">3.</strong> Download Probes
+                    </a>
+                  </li>
+                  <li class="chapter-item expanded ">
+                    <a href="../papers.html" tabindex="0">
+                      <strong aria-hidden="true">4.</strong> Papers Using FrogCap
+                    </a>
+                  </li>
+                </ol>
+<!-- I could use also an unescaped context value -->
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <!-- custom header content -->                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">FrogCap</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/chutter/FrogCap-Sequence-Capture" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1>Setting up the environment</h1>
+<h2>Required software</h2>
+<p>The FrogCap pipeline uses R as a wrapper to run multiple programs across all of the samples in the dataset, rather than one at a time. It also organizes and moves files around, deletes temporary files, and keeps your data and workflow organized. Later tutorials in the pipeline will use specific packages from R and BIOCONDUCTOR.</p>
+<hr />
+<ol>
+<li>Essentially a program and package manager. Especially useful for switching between different environments where programs can have conflicting dependencies. Also makes using R on a cluster easier.</li>
+</ol>
+<ul>
+<li><strong>anaconda</strong>: https://www.anaconda.com/distribution/</li>
+</ul>
+<ol start="2">
+<li>A program that matches sequence data to other sequence data.</li>
+</ol>
+<ul>
+<li><strong>BLAST</strong>: https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&amp;PAGE_TYPE=BlastDocs&amp;DOC_TYPE=Download</li>
+</ul>
+<p>Everything below can be installed via Anaconda. Links are provided in case the Anaconda install does not work or Anaconda is not being used. Currently (May 10 2019) AMAS and BLAST should be installed manually as they do not function properly through Anaconda.</p>
+<ol start="3">
+<li>Removal of adapter contamination and low quality bases:</li>
+</ol>
+<ul>
+<li><strong>Fastp</strong>: https://github.com/OpenGene/fastp</li>
+</ul>
+<ol start="4">
+<li>Set of tools including short read matching and other processing tools:</li>
+</ol>
+<ul>
+<li><strong>bbtools</strong>: https://jgi.doe.gov/data-and-tools/bbtools/</li>
+</ul>
+<ol start="5">
+<li>Program that assembles short-read Illumina read data into contigs:</li>
+</ol>
+<ul>
+<li><strong>Spades</strong>: http://cab.spbu.ru/software/spades/</li>
+</ul>
+<ol start="6">
+<li>Alignment of sequence data:</li>
+</ol>
+<ul>
+<li><strong>MAFFT V7</strong>: https://mafft.cbrc.jp/alignment/software/</li>
+</ul>
+<ol start="7">
+<li>Concatenation and data manipulation:</li>
+</ol>
+<ul>
+<li><strong>AMAS</strong>: https://github.com/marekborowiec/AMAS</li>
+</ul>
+<ol start="8">
+<li>Trimming of sequence alignments:</li>
+</ol>
+<ul>
+<li><strong>TRIMAL</strong>: http://trimal.cgenomics.org</li>
+</ul>
+<ol start="9">
+<li>The main scripting language used for this pipeline:</li>
+</ol>
+<ul>
+<li><strong>R statistical software</strong>: https://www.r-project.org</li>
+</ul>
+<p>Required core R packages</p>
+<ul>
+<li>ape</li>
+<li>seqinr</li>
+<li>stringr</li>
+<li>data.table</li>
+</ul>
+<p>Required BIOCONDUCTOR R packages</p>
+<ul>
+<li>GenomicRanges</li>
+<li>Biostrings</li>
+<li>Rsamtools</li>
+</ul>
+<h2>Download and organize required files</h2>
+<p>DOWNLOAD LINK COMING SOON (available upon request also)</p>
+<p>Note the probe set and version you are using in the &quot;Probe_Sets&quot; folder, and use those locus files only. The &quot;Contamination_Genomes&quot; folder contains genomes of potential contaminants from outside organisms. If you do not wish to use these, just delete or not include the folder and the scripts will ignore that step (not recommended).</p>
+<h2>Create new Anaconda environment</h2>
+<p>On clusters, an efficient method of managing software is through Anaconda. Anaconda allows separate environments to be created for specific purposes, as dependencies can conflict and cause everything to stop working.</p>
+<p>After installing Anaconda, create a new environment as shown below. &quot;--prefix&quot; is the path to your environment, where here I chose $WORK because Anaconda generates a large number of files and $HOME has a file number limit. If your cluster has the same restriction, you should also install everything in $WORK (or elsewhere). &quot;conda&quot; is next the folder that will contain several different environments, and &quot;FrogCap&quot; will be the name of this current environment. Finally, &quot;source activate&quot; will activate the new environment, so that new programs can be installed.</p>
+<blockquote>
+<p>conda create --prefix $WORK/conda/FrogCap</p>
+<p>source activate $WORK/conda/FrogCap</p>
+</blockquote>
+<p>Next, set up the channels where Anaconda will look for programs to be downloaded. Input the &quot;conda config&quot; commands in that order, as multiple programs are available in different repositories, but can sometimes be outdated. This order ensures the most recent versions are installed.</p>
+<blockquote>
+<p>conda config --add channels bioconda</p>
+<p>conda config --add channels conda-forge</p>
+<p>conda config --add channels defaults</p>
+</blockquote>
+<p>Install all the programs available on Anaconda as shown here:</p>
+<blockquote>
+<p>conda install -c r r-base</p>
+<p>conda install -c bioconda amas fastp mafft trimal bbmap</p>
+</blockquote>
+<p>Finally, install all the R packages required by FrogCap:</p>
+<blockquote>
+<p>conda install -c r r-stringr</p>
+<p>conda install -c conda-forge r-ape r-seqinr r-data.table</p>
+<p>conda install -c bioconda bioconductor-genomicranges bioconductor-biostrings bioconductor-rsamtools</p>
+</blockquote>
+<p>Note that programs should be grouped together as shown to ensure that the correct dependencies are installed and not later overwritten.</p>
+<h2>Download and install programs to your $PATH</h2>
+<p>Note: Needed for Blast and AMAS since their Anaconda installations do not function properly.</p>
+<p>Some programs may need to be downloaded and manually compiled and placed into your $PATH variable if Anaconda fails to install it or a dependency is changed and breaks the program. Alternatively, if Anaconda is not being used, you will have to do this manually for each program. On OSX and Linux, there should be a file called &quot;.bashrc&quot; or &quot;.bash_profile&quot; that has a list of your programs and their absolute paths (i.e. location on the computer), which the terminal uses to locate the program when its name is entered.</p>
+<p>For example, in my $HOME directory on our cluster, I have a folder called &quot;programs&quot; to store programs I have downloaded not available on anaconda.</p>
+<p>In particular, you should manually instal Blast, which for some reason breaks R in anaconda:</p>
+<p>After downloading and unzipping the Blast download folder, open the &quot;.bashrc&quot; or &quot;.bash_profile&quot; file and enter:</p>
+<blockquote>
+<p>PATH=&quot;/home/c111h652/programs/blast-path:$PATH&quot;</p>
+</blockquote>
+<p>Where the &quot;blast-path&quot; folder contains all the different Blast executables. After restarting your terminal session (the bash file loads on terminal startup), you should now be able to run Blast from any directory.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../tutorials/customize.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../tutorials/process.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../tutorials/customize.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../tutorials/process.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+
+
+
+        <script src="../assets/js/clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../assets/js/highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../assets/js/book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

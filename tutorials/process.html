@@ -1,0 +1,453 @@
+<!DOCTYPE HTML>
+<html lang="en-us" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using nimibook -->
+        <meta charset="UTF-8">
+        <title>tutorials/process.nim</title>
+
+        <!-- Custom HTML head -->
+        <!-- custom head content -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="a book built with nimibook">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🐳</text></svg>">
+        <link rel="stylesheet" href="../assets/css/variables.css">
+        <link rel="stylesheet" href="../assets/css/general.css">
+        <link rel="stylesheet" href="../assets/css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../assets/FontAwesome/css/font-awesome.min.css">
+
+        <!-- Highlight.js Stylesheets - I could use nimib native highlight but let's keep it for styling... -->
+        <link rel="stylesheet" href="../assets/css/highlight.css">
+        <link rel="stylesheet" href="../assets/css/tomorrow-night.css">
+        <link rel="stylesheet" href="../assets/css/ayu-highlight.css">
+
+        <!-- Custom theme stylesheets - why the "../"? -->
+
+
+        <!-- plausible analytics (new in nimibook) -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "..//assets";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                                <ol class="chapter">
+                  <li class="chapter-item expanded ">
+                    <a href="../index.html" tabindex="0">
+                      <strong aria-hidden="true">1.</strong> Introduction
+                    </a>
+                  </li>
+                  <li class="chapter-item expanded ">
+                    <a href="../tutorials/index.html" tabindex="0">
+                      <strong aria-hidden="true">2.</strong> Tutorials
+                    </a>
+                  </li>
+                  <li>
+                  <ol class="section">
+                  <li class="chapter-item expanded ">
+                    <a href="../tutorials/customize.html" tabindex="0">
+                      <strong aria-hidden="true">2.1.</strong> Customize Probeset
+                    </a>
+                  </li>
+                  <li class="chapter-item expanded ">
+                    <a href="../tutorials/setup.html" tabindex="0">
+                      <strong aria-hidden="true">2.2.</strong> Setup Environment
+                    </a>
+                  </li>
+                  <li class="chapter-item expanded ">
+                    <a href="../tutorials/process.html" class="active" tabindex="0">
+                      <strong aria-hidden="true">2.3.</strong> Data Processing
+                    </a>
+                  </li>
+                  <li class="chapter-item expanded ">
+                    <a href="../tutorials/alignment.html" tabindex="0">
+                      <strong aria-hidden="true">2.4.</strong> Data Alignment
+                    </a>
+                  </li>
+                  <li class="chapter-item expanded ">
+                    <a href="../tutorials/troubleshoot.html" tabindex="0">
+                      <strong aria-hidden="true">2.5.</strong> Troubleshooting
+                    </a>
+                  </li>
+                  </ol>
+                  </li>
+                  <li class="chapter-item expanded ">
+                    <a href="../download.html" tabindex="0">
+                      <strong aria-hidden="true">3.</strong> Download Probes
+                    </a>
+                  </li>
+                  <li class="chapter-item expanded ">
+                    <a href="../papers.html" tabindex="0">
+                      <strong aria-hidden="true">4.</strong> Papers Using FrogCap
+                    </a>
+                  </li>
+                </ol>
+<!-- I could use also an unescaped context value -->
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <!-- custom header content -->                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">FrogCap</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/chutter/FrogCap-Sequence-Capture" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1>Data Processing</h1>
+<p>This tutorial will guide you through the processing of your raw data into assembled contigs for each of your samples.</p>
+<h2>Create simple configuration file</h2>
+<p>The configuration file is quite simple for the FrogCap pipeline to function properly, and can even be excluded. Fastp trims the raw reads of adapters without needing a file of adapter sequences or barcodes, as it can detect adapter contamination algorithmically.</p>
+<p>This is the &quot;File_rename.csv&quot; file, which has only two columns: File and Sample.</p>
+<p>The &quot;File&quot; column: the unique string that is part of the file name for the two read pairs, while excluding read information. Example:</p>
+<blockquote>
+<p><code>Spinomantis_elegans_CRH111_AX1212_L001_R1.fastq.gz</code></p>
+</blockquote>
+<blockquote>
+<p><code>Spinomantis_elegans_CRH111_AX1212_L001_R2.fastq.gz</code></p>
+</blockquote>
+<p>Are the two sets of reads for a given sample. Your &quot;File&quot; column value would then be:</p>
+<blockquote>
+<p><code>Spinomantis_elegans_CRH111</code>(or Spinomantis_elegans_CRH111_AX1212; both will work)</p>
+</blockquote>
+<p>The &quot;Sample&quot; column: What you would like your sample name to be. This will be used up to alignments and trees. Ensure that your samples all have unique names and are not contained within each other (e.g. Genus_species_0, Genus_species_01). Also exclude special characters and replace spaces with underscores. Hyphens are also ok.
+In this example, the &quot;Sample&quot; Column would be:</p>
+<blockquote>
+<p>Spinomantis_elegans_CRH111</p>
+</blockquote>
+<p>All put together:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th align="center">Sample</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Spinomantis_elegans_CRH111</td>
+<td align="center">Spinomantis_elegans_CRH111</td>
+</tr>
+<tr>
+<td>Aglyptodactylus_securifer_CRH1644</td>
+<td align="center">Aglyptodactylus_securifer_CRH1644</td>
+</tr>
+<tr>
+<td>Boophis_burgeri_CRH0481</td>
+<td align="center">Boophis_burgeri_CRH0481</td>
+</tr>
+<tr>
+<td>Mantidactylus_femoralis_CRH2340</td>
+<td align="center">Mantidactylus_femoralis_CRH2340</td>
+</tr></tbody></table>
+<p>Note that the columns will not be the same if the sample name is not contained in your file name. This may look like:</p>
+<blockquote>
+<p><code>CRH111_AX1212_L001_R1.fastq.gz</code></p>
+</blockquote>
+<blockquote>
+<p><code>CRH111_AX1212_L001_R1.fastq.gz</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th align="center">Sample</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CRH111_AX1212</td>
+<td align="center">Spinomantis_elegans_CRH111</td>
+</tr>
+<tr>
+<td>CRH1644_AX1212</td>
+<td align="center">Aglyptodactylus_securifer_CRH1644</td>
+</tr>
+<tr>
+<td>CRH0481_AX1212</td>
+<td align="center">Boophis_burgeri_CRH0481</td>
+</tr>
+<tr>
+<td>CRH2340_AX1212</td>
+<td align="center">Mantidactylus_femoralis_CRH2340</td>
+</tr></tbody></table>
+<h2>Raw data input</h2>
+<p>Finally, before running the FrogCap pipeline scripts, the input files must be organized in a specific way. First, create a directory and name it after the project name. Second, put the newly created &quot;File_rename.csv&quot;, the downloaded and unzipped folder of &quot;FrogCap_Files&quot;, and finally the demultiplexed raw reads in a folder named &quot;raw_data&quot;. An example of the file structure is shown below.</p>
+<pre><code>     /Project_Name
+      ├── /raw_data
+      │   ├── Spinomantis_elegans_CRH111_R1.fastq.gz
+      │   ├── Spinomantis_elegans_CRH111_R2.fastq.gz
+      │   ├── Boophis_burgeri_CRH0481_R1.fastq.gz
+      │   ├── Boophis_burgeri_CRH0481_R2.fastq.gz
+      │   ├── Aglyptodactylus_securifer_CRH1644_R1.fastq.gz
+      │   ├── Aglyptodactylus_securifer_CRH1644_R2.fastq.gz
+      │   ├── Mantidactylus_femoralis_CRH2340_R1.fastq.gz
+      │   └── Mantidactylus_femoralis_CRH2340_R2.fastq.gz
+      ├── File_rename.csv
+      └── /FrogCap_Files
+
+*/ denotes directory
+
+</code></pre>
+<h2>Preprocess the Reads [R script 01_Pre_Process_Reads.R]</h2>
+<p>The first script that will be used is &quot;01_Pre_Process_Reads.R&quot;. Open this script in any text or R editor to edit the run parameters.</p>
+<pre><code>
+##########################################################################################################
+#Parameter setups. Only edit values here. 
+##########################################################################################################
+
+#Cluster
+work.dir&lt;-&quot;/home/Project_Name&quot;
+raw.dir&lt;-&quot;/home/Project_Name/raw_reads&quot;
+decontam.path&lt;-&quot;/home/Project_Name/FrogCap_Files/Contamination_Genomes&quot; #folder of contaminants I gave
+
+#Various settings of choice
+#Sample file
+# &quot;File&quot; column for you file name
+# &quot;Sample&quot; column should correspond to the file name for each samples set of reads e.g. &quot;CRH01&quot;
+sample.file&lt;-&quot;File_rename.csv&quot; #two column file with &quot;File&quot; and &quot;Sample&quot;
+out.dir&lt;-&quot;Processed_Samples&quot; #I would keep this name. 
+threads&lt;-10 #number of threads, 8-10 is a recommended amount
+mem&lt;-&quot;80g&quot; #need the &quot;g' character here
+
+</code></pre>
+<p>This section is the only section that needs editing. Namely, the directories should be the full path to make things go smoother. Also note the threads and memory that can be adjusted.</p>
+<p>When finished editing, run the script using the &quot;Rscript&quot; terminal command which installs alongside R. This can be done manually in the terminal window or added as the command in a cluster file.</p>
+<pre><code>
+&gt; Rscript 01_Pre_Process_Reads.R
+
+</code></pre>
+<p>This script takes about a 30-45 minutes a sample using the threads and memory from above. When completed, it should create several types of new files and directories, as shown here:</p>
+<pre><code>     /Project_Name
+      ├── /raw_data
+      ├── File_rename.csv
+      ├── /FrogCap_Files
+      └── /Processed_Samples
+          ├── /Spinomantis_elegans_CRH111
+          ├── /Boophis_burgeri_CRH0481
+          ├── /Aglyptodactylus_securifer_CRH1644
+          └── /Mantidactylus_femoralis_CRH2340
+
+*/ denotes directory
+
+</code></pre>
+<p>Inside the Processed_Samples directory is a directory for every sample. In each of these sample directory are the processed reads and each sample should have the following files:</p>
+<pre><code>
+     /Sample_Name_ID
+      ├── /reports
+      │   ├── read_merging_stats.csv
+      │   ├── cleaned-reads-snp_stats.csv
+      │   ├── Adapter_trimming_fastp.html
+      │   └── Adapter_trimming_fastp.json
+      ├── /assembly-reads
+      │   ├── Sample_name_ID_READ1.fastq.gz
+      │   ├── Sample_name_ID_READ2.fastq.gz
+      │   └── Sample_name_ID_singletons.fastq.gz
+      ├── /cleaned-reads-snp
+      │   ├── Sample_name_ID_READ1.fastq.gz
+      │   └── Sample_name_ID_READ2.fastq.gz
+      └── /raw-reads-symlink
+          ├── Sample_name_ID_READ1.fastq.gz
+          └── Sample_name_ID_READ2.fastq.gz
+
+*/ denotes directory
+
+</code></pre>
+<p>The directories contains reads filtered differently for different types of analyses:</p>
+<ul>
+<li>
+<p>assembly-reads: these reads are for SPades to assemble. They have been cleaned, filtered, and merged.</p>
+</li>
+<li>
+<p>cleaned-reads-snp: these reads are for downstream SNP calling analyses. They have only been cleaned.</p>
+</li>
+<li>
+<p>raw-reads-symlink: these are symlinks (i.e. shortcuts) to your raw reads and don't use up much space.</p>
+</li>
+<li>
+<p>QC-files: Summary files from processing steps, and other summary statistics will be placed here.</p>
+</li>
+</ul>
+<h2>Assemble the processed reads [R script 02_Assemble_Spades.R]</h2>
+<p>After cleaning and filtering from the previous step, the second script will assemble the cleaned reads. The name of the script that will be used is &quot;02_Assemble_Spades.R&quot;. Open this script in any text or R editor to edit the run parameters.</p>
+<pre><code class="language-r">##########################################################################################################
+#Parameter setups. Only edit values here. 
+##########################################################################################################
+
+#Set up parameters
+threads&lt;-&quot;8&quot;
+mem&lt;-&quot;80&quot;
+
+#Directory where the &quot;Processed_Samples&quot; Folder is located
+work.dir&lt;-&quot;/home/Project_Name&quot;
+
+######################## Probably shouldn't change these 
+#Choose which directory to use for assembly:
+#aseembly-reads = recommended assembly reads directory (default)
+#cleaned-reads-snp = if the assembly_reads are too aggressively filtered. 
+read.dir&lt;-&quot;assembly-reads&quot;
+out.dir&lt;-&quot;Assembled_Contigs&quot;
+in.dir&lt;-&quot;Processed_Samples&quot;
+clean&lt;-&quot;True&quot; #Deletes intermediate files, recommended
+</code></pre>
+<p>In the &quot;Probably shouldn't change these&quot; section, changing the assembly directory from the &quot;assembly-reads&quot; to the &quot;cleaned-reads-snp&quot; can help in situations where the &quot;assembly-reads&quot; give poor results. This can happen when the raw data is low depth of coverage and quality. The other folders are existing directory names if they have been changed from the defaults. &quot;Clean&quot; will remove intermediate assembly files, only change if you need a specific output file.</p>
+<p>When finished editing, run the script using the &quot;Rscript&quot; terminal command which installs alongside R. This can be done manually in the terminal window or added as the command in a cluster file.</p>
+<pre><code class="language-bash">&gt; Rscript 02_Assemble_Spades.R
+</code></pre>
+<p>This script can take up to 10 hours a sample, but averages around 2-3 (using the threads and memory from above). Its also possible to run multiple instances of the script on a subset of the samples to speed things along. When completed, it should create three new files and one new directory, as shown here:</p>
+<pre><code>
+     /Sample_Name_ID
+      ├── /reports
+      │   ├── assembly-reads_stats.csv *** NEW
+      │   ├── read_merging_stats.csv
+      │   ├── cleaned-reads-snp_stats.csv
+      │   ├── Adapter_trimming_fastp.html
+      │   └── Adapter_trimming_fastp.json
+      ├── /assembled-contigs *** NEW
+      │   ├── Sample_name_ID_contigs.fa *** NEW
+      │   └── Sample_name_ID_dipcontigs.fa *** NEW
+      ├── /assembly-reads
+      │   ├── Sample_name_ID_READ1.fastq.gz
+      │   ├── Sample_name_ID_READ2.fastq.gz
+      │   └── Sample_name_ID_singletons.fastq.gz
+      ├── /cleaned-reads-snp
+      │   ├── Sample_name_ID_READ1.fastq.gz
+      │   └── Sample_name_ID_READ2.fastq.gz
+      └── /raw-reads-symlink
+          ├── Sample_name_ID_READ1.fastq.gz
+          └── Sample_name_ID_READ2.fastq.gz
+
+*/ denotes directory
+
+</code></pre>
+<p>The Assembly run generated a statistics file in the &quot;reports&quot; folder and a new folder &quot;assembled-contigs&quot;. This folder has two new files: the &quot;_contigs.fa&quot; file are the Spades assembled contigs while the &quot;_dipcontigs.fa&quot; file are the regular contigs where contigs from the same haplotype are merged together to create a &quot;haplocontig&quot;.</p>
+<p>These two scripts can be run on any number of samples in any combination. However, when done with Tutorial 1, you will need to select your definitive sample set for alignment for Tutorial 2.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../tutorials/setup.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../tutorials/alignment.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../tutorials/setup.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../tutorials/alignment.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+
+
+
+        <script src="../assets/js/clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../assets/js/highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../assets/js/book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
