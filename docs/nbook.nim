@@ -1,7 +1,7 @@
 import nimibook
 
 var book = newBookFromToc("FrogCap", "book"):
-  entry("Introduction", "index")
+  entry("About", "index")
   section("Tutorials", "tutorials/index"):
     entry("Customize Probeset", "customize")
     entry("Setup Environment", "setup")
@@ -12,5 +12,6 @@ var book = newBookFromToc("FrogCap", "book"):
   entry("Papers Using FrogCap", "papers")
 
 book.git_repository_url = "https://github.com/chutter/FrogCap-Sequence-Capture"
+book.preferred_dark_theme = "coal"
 
 nimibookCli(book)
