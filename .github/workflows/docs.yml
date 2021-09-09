@@ -1,0 +1,37 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  gh-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: "install_nim"
+        id: install_nim
+        uses: iffy/install-nim@v3
+
+      - name: install dependencies
+        working-directory: ./docs
+        run: nimble install -y
+
+      - name: Compile Book
+        working-directory: ./docs
+        run: nim c -d:release nbook.nim
+
+      - name: Init Book
+        working-directory: ./docs
+        run: ./nbook init
+
+      - name: Build Book
+        working-directory: ./docs
+        run: ./nbook build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/docs
+          cname: frogcap.com

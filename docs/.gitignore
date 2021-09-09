@@ -1,0 +1,7 @@
+*
+!*.*
+!*/
+*.mustache
+*.html
+*.json
+docs/
