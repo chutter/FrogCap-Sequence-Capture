@@ -23,7 +23,7 @@ To begin, download the "Custom-Probe-Set" folder in the main GitHub directory to
 The folder contains the three files:
 
 File | Explanation
------------|:--------:|
+-----------|:--------:
 FrogCap_Probe-Select.R | The R script for creating the custom probe set
 Taxonomy_dataset.csv | A taxonomy database for each marker and taxonomic group sequenced
 Marker_Bait_dataset.csv | Markers and their associated baits and other metadata
